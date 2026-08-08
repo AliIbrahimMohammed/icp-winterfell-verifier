@@ -1,0 +1,23 @@
+# Rust
+/target
+**/*.rs.bk
+Cargo.lock
+
+# dfx / Internet Computer
+.dfx/
+*.wasm
+.wasm
+.ic-assets.json
+canister_ids.json
+
+# Environment / local output
+.env
+proof_*.txt
+argfile_*.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

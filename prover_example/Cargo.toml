@@ -1,0 +1,14 @@
+[package]
+name = "prover_example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Reuse the exact same AIR definition as the canister. This matters: prover
+# and verifier MUST agree on the AIR byte-for-byte, or every proof will be
+# rejected -- sharing the crate is the easiest way to guarantee that.
+stark_air = { path = "../air" }
+
+# The "concurrent" feature is fine here -- this runs off-chain on a normal
+# machine, not inside a canister, so multi-threaded proving is a pure win.
+winterfell = { version = "0.13.1", features = ["concurrent"] }

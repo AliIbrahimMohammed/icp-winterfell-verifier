@@ -1,0 +1,11 @@
+[package]
+name = "stark_air"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# No feature choice is made here on purpose: the AIR definition itself is
+# identical whether it's linked into the (single-threaded, in-canister)
+# verifier or the (optionally multi-threaded, off-chain) prover. Each
+# downstream crate picks its own winterfell features.
+winterfell = { version = "0.13.1", default-features = false, features = ["std"] }

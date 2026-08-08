@@ -1,0 +1,16 @@
+type VerifyRequest = record {
+  proof_bytes : blob;
+  start : text;
+  result : text;
+  min_security_bits : nat32;
+};
+
+type VerifyResult = variant {
+  Valid;
+  Invalid : record { reason : text };
+};
+
+service : {
+  verify_proof : (VerifyRequest) -> (VerifyResult);
+  health : () -> (text) query;
+};

@@ -1,0 +1,11 @@
+{
+  "canisters": {
+    "stark_verifier": {
+      "type": "rust",
+      "package": "stark_verifier",
+      "candid": "canister/stark_verifier.did"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

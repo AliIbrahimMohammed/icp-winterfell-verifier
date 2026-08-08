@@ -1,0 +1,24 @@
+[package]
+name = "stark_verifier"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# IC canister SDK
+ic-cdk = "0.20.2"
+candid = "0.10.34"
+serde = { version = "1.0", features = ["derive"] }
+
+# Shared AIR definition -- MUST be the exact same one the off-chain prover
+# links against (see ../prover_example), or every proof will be rejected.
+stark_air = { path = "../air" }
+
+# Winterfell STARK verifier.
+# IMPORTANT: do NOT enable the "concurrent" feature. It pulls in rayon, which
+# spawns OS threads via std::thread -- not available inside a canister's
+# single-threaded WASM sandbox. The default feature set ("std" only) is what
+# we want: pure single-threaded verification, no threads, no non-determinism.
+winterfell = { version = "0.13.1", default-features = true }
